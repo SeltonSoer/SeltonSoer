@@ -1,0 +1,18 @@
+<div class="login for-text-header">
+  Авторизация
+  <form (ngSubmit)="login(f.value)" #f="ngForm">
+  <div>
+      <mat-form-field style="text-align: center">
+        <mat-placeholder class="placeholder login-text">Введите логин</mat-placeholder>
+          <input name="username" #name="ngModel" [(ngModel)]="user.username"  matInput required/>
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field style="text-align: center">
+        <mat-placeholder class="placeholder login-text">Введите пароль</mat-placeholder>
+          <input type="password" name="password" #name="ngModel" [(ngModel)]="user.password" matInput required/>
+      </mat-form-field>
+  </div>
+    <div><button [disabled]="loginService.flagLoading" class="button-color" mat-raised-button>Войти</button></div>
+    </form>
+</div>

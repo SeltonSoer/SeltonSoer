@@ -1,0 +1,10 @@
+<div class="div-bottom-left for-text-bottom" style="background: rgba(255,165,0,0.82) !important;">
+  <div> Поиск товара </div>
+  <form (ngSubmit)="result(f.value)" #f="ngForm">
+    <mat-form-field style="text-align: center">
+      <mat-placeholder class="placeholder">Введите товар для поиска</mat-placeholder>
+        <input name="product" #name="ngModel" (ngModel)="name.name" class="for-input" matInput required/>
+    </mat-form-field>
+  <div><button [disabled]="flagLoading" class="button-color" mat-raised-button>Искать</button></div>
+  </form>
+</div>

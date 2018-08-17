@@ -1,0 +1,51 @@
+<mat-toolbar class="header">
+  <span class="for-text-header" style="padding-top: 2px !important;">Сопоставление</span>
+  <span class="spacer"></span>
+  <button class="button-color" mat-raised-button (click)="logout($event)" >Выход</button>
+</mat-toolbar>
+
+<div class="margin-auto">
+  <div>
+  <table class="back-table" mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="product">
+      <th *matHeaderCellDef> Наименование товара </th>
+      <td (click)="product(element)" *matCellDef="let element"> {{element.product}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="price">
+      <th *matHeaderCellDef> Магазин </th>
+      <td *matCellDef="let element"> {{element.store}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="store">
+      <th *matHeaderCellDef> Цена </th>
+      <td *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="region">
+      <th *matHeaderCellDef> Регион </th>
+      <td *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator style="background: rgba(254,255,233,0)" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+  <!--<div class="div-bottom-right for-text-bottom">-->
+    <!--<div>Поиск по 'code'</div>-->
+    <!--<mat-form-field style="text-align: center">-->
+      <!--<mat-placeholder class="placeholder">Введите товар для поиска</mat-placeholder>-->
+        <!--<input class="for-input" matInput required/>-->
+    <!--</mat-form-field>-->
+    <!--<div><button class="button-color" mat-raised-button>Искать</button></div>-->
+  <!--</div>-->
+</div>
+
+
