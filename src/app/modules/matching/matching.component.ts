@@ -57,8 +57,6 @@ export class MatchingComponent implements OnInit {
   product(element) {
     this.router.navigate(['product'], {relativeTo: this.route.root});
     this.serviceChecks.matchingProduct = element;
-    // this.messageService.matchingProduct();
-    // this.messageService.openSearch();
     this.serviceChecks.tempData = element;
   }
 }
