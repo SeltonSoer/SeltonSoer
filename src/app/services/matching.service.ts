@@ -9,6 +9,7 @@ export class MatchingService {
 
   tempDataProductC: Array<any> = [];
   tempData: Array<any>;
+  matchingProduct: Array<any>;
 
   constructor (
     private http: RestService,
