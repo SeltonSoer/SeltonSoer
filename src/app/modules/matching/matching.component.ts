@@ -4,6 +4,7 @@ import { Checks } from '../../models/matching.model';
 import { LoginService } from '../../services/login.service';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MessageService } from '../../services/message.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-matching',
@@ -20,11 +21,14 @@ export class MatchingComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor (
+  constructor(
     private serviceChecks: MatchingService,
     private loginService: LoginService,
     private messageService: MessageService,
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+  }
 
   ngOnInit() {
     this.serviceChecks.getChecks().subscribe((res) => {
@@ -46,21 +50,13 @@ export class MatchingComponent implements OnInit {
     });
   }
 
-  logout () {
+  logout() {
     this.loginService.logout();
   }
 
   product(element) {
-
-    this.messageService.matchingProduct();
-    this.messageService.openSearch();
+    this.router.navigate(['product'], {relativeTo: this.route.root});
+    this.serviceChecks.matchingProduct = element;
     this.serviceChecks.tempData = element;
   }
-
-  // get flagTable() {
-  //   if (this.checks !== undefined) {
-  //     return this.checks.length > 287
-  //   }
-  // }
-  // Переделать с учетом поиска (при поиске если есть запись, то отобразить таблицу
 }

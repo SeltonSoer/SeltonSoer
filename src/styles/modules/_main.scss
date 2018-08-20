@@ -1,3 +1,15 @@
+.header-2page {
+  position: relative;
+  display: block;
+  background-color: rgb(120, 121, 116) !important;
+  height: 45px !important;
+  max-width: 1000px;
+  margin: 0 auto !important;
+  color: white;
+  border: 1px solid white;
+  margin-top: 10px !important;
+}
+
 body {
   margin: 0;
 }
@@ -44,6 +56,17 @@ body {
   position: relative;
   max-width: 1000px;
   margin: 10px auto;
+}
+
+.div-input {
+  position: relative;
+  margin: 10px auto;
+  display: block;
+  color: white;
+  background-color: #787974;
+  height: auto;
+  width: 65%;
+  border: 1px solid #fff;
 }
 
 .div-bottom-left {

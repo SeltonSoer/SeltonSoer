@@ -4,7 +4,7 @@ import { MessageService } from '../../../../services/message.service';
 import { DataService } from '../../../../services/data.service';
 import { RestService } from '../../../../services/rest.service';
 import { ProductC } from '../../../../models/matching.model';
-import {MatchingService} from '../../../../services/matching.service';
+import { MatchingService } from '../../../../services/matching.service';
 
 @Component({
   selector: 'app-modal-win',
