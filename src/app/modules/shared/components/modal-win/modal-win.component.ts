@@ -42,7 +42,8 @@ export class ModalWinComponent implements OnInit {
       this.matchingService.tempDataProductC = [];
     }
     this.http.get('http://10.21.3.29:8095/service1c/wares/?name=' + product).subscribe(x => {
-      x.data.forEach(x => {
+      console.log(x);
+        x.data.forEach(x => {
         this.productc = new ProductC;
         this.productc.name = x.name;
         this.productc.code = x.code;
@@ -51,9 +52,6 @@ export class ModalWinComponent implements OnInit {
       });
       console.log(this.matchingService.tempDataProductC);
       this.messageService.resultSearch();
-    },
-    error => {
-      console.error('error')
     });
   }
 

@@ -20,6 +20,7 @@ import { ResultWinComponent } from './modules/shared/components/result-win/resul
 import { MatchingProductComponent } from './modules/shared/components/matching-product/matching-product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
+import { ErrorWinComponent } from './modules/shared/components/error-win/error-win.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DataService } from './services/data.service';
     AppComponent,
     ModalWinComponent,
     ResultWinComponent,
-    MatchingProductComponent
+    MatchingProductComponent,
+    ErrorWinComponent
   ],
   imports: [
     MaterialModule,
@@ -47,7 +49,8 @@ import { DataService } from './services/data.service';
   entryComponents: [
     ModalWinComponent,
     ResultWinComponent,
-    MatchingProductComponent
+    MatchingProductComponent,
+    ErrorWinComponent
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

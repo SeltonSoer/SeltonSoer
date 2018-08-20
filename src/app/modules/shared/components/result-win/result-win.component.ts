@@ -15,7 +15,7 @@ export class ResultWinComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ResultWinComponent>,
-    private matchingService: MatchingService
+    public matchingService: MatchingService
   ) {}
 
   ngOnInit() {
