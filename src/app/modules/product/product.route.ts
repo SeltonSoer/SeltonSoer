@@ -1,18 +1,17 @@
 import { Routes } from "@angular/router"
-import { MatchingComponent } from './matching.component';
 import { AuthGuard } from '../../guards/auth.guard';
+import { ProductComponent } from './product.component';
 
 
-export const routesMatching: Routes = [
+export const routesProduct: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    component: MatchingComponent,
+    component: ProductComponent,
     children: []
     // {
     //   path: '',
     //   component: MatchingComponent,
-    //   pathMatch: 'full'
     //   pathMatch: 'full'
     // },
   }];
