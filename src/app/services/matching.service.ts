@@ -81,7 +81,7 @@ export class MatchingService {
     this.messageService.openDialog(_title, answer, y => {
       this.del(checked)
     },
-        n => {
+      () => {
         this.checkout = false
       }
     );
