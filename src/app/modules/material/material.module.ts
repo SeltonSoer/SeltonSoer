@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  MatBadgeModule,
   MatProgressSpinnerModule,
   MatCheckboxModule,
   MatAutocompleteModule,
@@ -36,6 +37,7 @@ import {
 } from '@angular/material';
 
 const material = [
+    MatBadgeModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
     MatAutocompleteModule,

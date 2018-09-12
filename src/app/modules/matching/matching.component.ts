@@ -66,7 +66,7 @@ export class MatchingComponent implements OnInit {
     this.matchingService.getNumber().subscribe((res) =>{
         this.matchingService.filterNum.push(res);
         this.getCheckss();
-      });
+    });
   }
 
   nextPage() {
