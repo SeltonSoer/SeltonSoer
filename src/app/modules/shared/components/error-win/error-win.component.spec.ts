@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatchingProductComponent } from './matching-product.component';
+import { ErrorWinComponent } from './error-win.component';
 
-describe('MatchingProductComponent', () => {
-  let component: MatchingProductComponent;
-  let fixture: ComponentFixture<MatchingProductComponent>;
+describe('ErrorWinComponent', () => {
+  let component: ErrorWinComponent;
+  let fixture: ComponentFixture<ErrorWinComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchingProductComponent ]
+      declarations: [ ErrorWinComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MatchingProductComponent);
+    fixture = TestBed.createComponent(ErrorWinComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

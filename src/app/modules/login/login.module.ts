@@ -11,7 +11,7 @@ import { MaterialModule } from "../material/material.module"
     CommonModule,
     FormsModule,
     MaterialModule,
-    RouterModule.forChild(routesLogin)
+    RouterModule.forChild(routesLogin),
   ],
   exports: [
     RouterModule

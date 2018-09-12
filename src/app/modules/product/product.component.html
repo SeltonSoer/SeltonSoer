@@ -1,60 +1,126 @@
-<mat-toolbar class="header-2page">
-  <span class="for-text-header" style="padding-top: 2px !important;"> Сопоставляемый товар</span>
+<mat-toolbar class="header">
+  <span class="for-text-header" style="padding-top: 2px !important;">Сопоставление</span>
   <span class="spacer"></span>
-     <button class="button-color" mat-raised-button (click)="backClicked()">Назад</button>
+  <button class="button-color" mat-raised-button (click)="getReport()"
+    style="margin-right: 10px">Составить отчет</button>
+  <button class="button-color" mat-raised-button (click)="logout($event)" >Выход</button>
 </mat-toolbar>
-<div class="margin-auto" style="margin-top: 1px !important;">
+<mat-toolbar class="header-2page">
+  <span class="for-text-header" style="padding-top: 2px !important;">Сопоставляемый товар</span>
+  <span class="spacer"></span>
+     <button style="margin-bottom: 5px !important;"
+             class="button-color" mat-raised-button (click)="delete()">Пропустить товар</button>
+</mat-toolbar>
+<div class="margin-auto" style="margin-top: 0 !important;">
   <table class="back-table">
     <thead>
       <tr>
-        <td>Наименование товара</td>
-        <td>Магазин</td>
-        <td>Цена</td>
-        <td>Регион</td>
+        <th>Наименование товара</th>
+        <th>Магазин</th>
+        <th>Цена</th>
+        <th>Регион</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>{{data.product}}</td>
-      <td>{{data.store}}</td>
-      <td>{{data.price}}</td>
-      <td>{{data.region}}</td>
+    <tr *ngIf="data" (click)="getProductByCodeOrName(data)">
+      <td style="border-bottom-left-radius: 8px" > {{ data.product }} </td>
+      <td> {{ data.store }} </td>
+      <td> {{ data.price }} </td>
+      <td style="border-bottom-right-radius: 8px" > {{ data.region }} </td>
     </tr>
     </tbody>
   </table>
 
-<div class="div-input for-text-bottom">
-  <form (ngSubmit)="result(f.value)" #f="ngForm" class="margin-auto">
-    <mat-form-field style="text-align: center; max-width: 80%; width: 100%">
-      <mat-placeholder class="placeholder">Введите товар для поиска</mat-placeholder>
-      <input name="product" #name="ngModel" (ngModel)="name.name" class="for-input" matInput required/>
-    </mat-form-field>
-    <div><button [disabled]="flagLoading" class="button-color" mat-raised-button>Искать</button></div>
-  </form>
-</div>
+   <div *ngIf="tableCheck" class="div-bottom for-text-bottom"
+         style="margin-top: 10px; margin-left: 0; margin-bottom: 1px;
+         width: 998px; position: relative; background: rgba(180,81,75,0.83) !important;">
+      Наименование сопостовляемого товара уже сопостовлялось с этим товаром
+    </div>
+  <table *ngIf="tableCheck" class="back-table">
+    <thead>
+      <tr>
+        <th style="border-top-left-radius: 8px">Наименование товара</th>
+        <th>Код товара</th>
+        <th style="text-align: center; border-top-right-radius: 8px">Выбрать товар</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of matchingService.alreadyMatching" style="background-color: rgb(199, 200, 195) !important;">
+      <td> {{ data.name }} </td>
+      <td> {{ data.code }} </td>
+      <td style="text-align: center">
+          <mat-radio-button (click)="productC(data)"></mat-radio-button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-  <div *ngIf="tempData">
-    <div class="div-bottom for-text-bottom" style="margin-top: 0; margin-left: 0; width: 998px">
-      Результаты поиска
-    </div>
-    <div class="div-bottom-and-table for-text-bottom" style="margin-top: 31px; margin-left: 0">
-      <table class="back-table" style="width: 1000px">
-        <thead>
-        <tr>
-          <th>Наименование товара</th>
-          <th>Код товара</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let product of tempData">
-          <td> {{ product.name }} </td>
-          <td> {{ product.code }} </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="div-input">
+  <div class="for-text-bottom" style="width: 500px; margin: 0 auto">
+    <form (ngSubmit)="getProductByCodeOrName(f.value)" #f="ngForm" class="margin-auto">
+      <mat-form-field style="margin-top: -15px !important; text-align: center; max-width: 50%; width: 50%">
+        <mat-placeholder class="placeholder">Поиск товара (по коду или имени)</mat-placeholder>
+        <input name="product" #name="ngModel" (ngModel)="name.name" class="for-input" matInput required/>
+      </mat-form-field>
+      <div style="margin-top: -1px">
+        <button [disabled]="flagLoading" class="button-color" mat-raised-button>Искать</button>
+      </div>
+    </form>
   </div>
-
 </div>
 
 
+
+  <div>
+    <div class="div-bottom for-text-bottom"
+         style="margin-top: 0; margin-left: 0; width: 998px; position: relative;">
+      Товары для сопоставления
+    </div>
+
+    <table class="back-table for-text-bottom"
+           style="margin-top: 0" mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th class="for-text-header-table" *matHeaderCellDef> Наименование товара </th>
+        <td *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="code">
+        <th class="for-text-header-table" *matHeaderCellDef> Код товара </th>
+        <td *matCellDef="let element"> {{element.code}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="boole">
+        <th class="for-text-header-table" style="text-align: center" *matHeaderCellDef> Выберите товар </th>
+        <td *matCellDef="let element" style="text-align: center">
+          <mat-radio-button (click)="productC(element)"></mat-radio-button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20, 30]" showFirstLastButtons></mat-paginator>
+     <div *ngIf="elementC" style="margin-left: 822px; margin-top: -48px;">
+        <button (click)="matching()" [disabled]="flagLoading" class="button-color" mat-raised-button>
+          Сопоставить
+        </button>
+     </div>
+
+      <div id="floatBarsG" *ngIf="matchingService.checkout"> <!-- loader gif !-->
+	      <div id="floatBarsG_1" class="floatBarsG"></div>
+	      <div id="floatBarsG_2" class="floatBarsG"></div>
+	      <div id="floatBarsG_3" class="floatBarsG"></div>
+	      <div id="floatBarsG_4" class="floatBarsG"></div>
+	      <div id="floatBarsG_5" class="floatBarsG"></div>
+	      <div id="floatBarsG_6" class="floatBarsG"></div>
+	      <div id="floatBarsG_7" class="floatBarsG"></div>
+	      <div id="floatBarsG_8" class="floatBarsG"></div>
+      </div>
+
+  </div>
+</div>

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config ./proxy.conf.js --host 10.21.3.29 --port 8020 --live-reload=true",
+    "start": "ng serve --proxy-config ./proxy.conf.js --host 10.21.3.29 --port 8095 --live-reload=true",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

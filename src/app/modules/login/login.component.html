@@ -1,18 +1,83 @@
-<div class="login for-text-header">
-  Авторизация
-  <form (ngSubmit)="login(f.value)" #f="ngForm">
-  <div>
-      <mat-form-field style="text-align: center">
-        <mat-placeholder class="placeholder login-text">Введите логин</mat-placeholder>
-          <input name="username" #name="ngModel" [(ngModel)]="user.username"  matInput required/>
-      </mat-form-field>
-  </div>
-  <div>
-      <mat-form-field style="text-align: center">
-        <mat-placeholder class="placeholder login-text">Введите пароль</mat-placeholder>
-          <input type="password" name="password" #name="ngModel" [(ngModel)]="user.password" matInput required/>
-      </mat-form-field>
-  </div>
-    <div><button [disabled]="loginService.flagLoading" class="button-color" mat-raised-button>Войти</button></div>
-    </form>
-</div>
+<mat-accordion>
+  <mat-expansion-panel style="
+                          border-top-left-radius: 8px;
+                          border-top-right-radius: 8px;">
+    <mat-expansion-panel-header style="
+                          border-top-left-radius: 8px;
+                          border-top-right-radius: 8px;">
+        Авторизация
+    </mat-expansion-panel-header>
+    <div class="login for-text-header">
+      Авторизация
+      <form (ngSubmit)="login(auth.value)" #auth="ngForm">
+        <div>
+            <mat-form-field style="text-align: center">
+              <mat-placeholder class="placeholder login-text">Введите логин</mat-placeholder>
+                <input name="username" #name="ngModel" [(ngModel)]="user.username"  matInput required/>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field style="text-align: center">
+              <mat-placeholder class="placeholder login-text">Введите пароль</mat-placeholder>
+                <input type="password" name="password" #name="ngModel" [(ngModel)]="user.password" matInput required/>
+            </mat-form-field>
+        </div>
+            <div>
+              <button [disabled]="!user.username || !user.password" class="button-color" mat-raised-button>Войти</button>
+            </div>
+      </form>
+    </div>
+  </mat-expansion-panel >
+
+  <mat-expansion-panel style="
+                          border-bottom-left-radius: 8px;
+                          border-bottom-right-radius: 8px;
+                          margin-top: 0 !important;">
+    <mat-expansion-panel-header>
+      Регистрация
+    </mat-expansion-panel-header>
+    <div class="login for-text-header" style="height: 350px; !important;">
+      Регистрация
+      <form (ngSubmit)="registration(reg.value)" #reg="ngForm">
+        <div>
+          <mat-form-field style="text-align: center">
+            <mat-placeholder class="placeholder login-text">Введите логин</mat-placeholder>
+            <input name="username" #name="ngModel" [(ngModel)]="registrationInfo.username"  matInput required/>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field style="text-align: center">
+            <mat-placeholder class="placeholder login-text">Введите пароль</mat-placeholder>
+            <input type="password" name="password" #name="ngModel" [(ngModel)]="registrationInfo.password" matInput required/>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field style="text-align: center">
+            <mat-placeholder class="placeholder login-text">Введите почту</mat-placeholder>
+            <input name="email" #email="ngModel" [(ngModel)]="registrationInfo.email" matInput required email/>
+          </mat-form-field>
+        </div>
+        <div>
+          <button [disabled]="!registrationInfo.email ||
+                              !registrationInfo.password ||
+                              !registrationInfo.username"
+                  class="button-color" mat-raised-button style="margin-top: 20px">
+            Готово
+          </button>
+        </div>
+      </form>
+    </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+      <div id="floatBarsG" *ngIf="loginService.flagLoading"> <!-- loader gif !-->
+	      <div id="floatBarsG_1" class="floatBarsG"></div>
+	      <div id="floatBarsG_2" class="floatBarsG"></div>
+	      <div id="floatBarsG_3" class="floatBarsG"></div>
+	      <div id="floatBarsG_4" class="floatBarsG"></div>
+	      <div id="floatBarsG_5" class="floatBarsG"></div>
+	      <div id="floatBarsG_6" class="floatBarsG"></div>
+	      <div id="floatBarsG_7" class="floatBarsG"></div>
+	      <div id="floatBarsG_8" class="floatBarsG"></div>
+      </div>

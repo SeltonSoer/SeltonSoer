@@ -9,9 +9,4 @@ export const routesProduct: Routes = [
     canActivate: [AuthGuard],
     component: ProductComponent,
     children: []
-    // {
-    //   path: '',
-    //   component: MatchingComponent,
-    //   pathMatch: 'full'
-    // },
   }];

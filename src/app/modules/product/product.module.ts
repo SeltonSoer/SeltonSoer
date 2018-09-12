@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { routesProduct } from './product.route';
-import {ProductComponent} from './product.component';
+import { ProductComponent } from './product.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({

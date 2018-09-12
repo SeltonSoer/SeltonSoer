@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Urls } from '../models/urls.models';
 import { RestService } from './rest.service';
-import "rxjs/add/operator/catch"
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import {IUserChange, User} from '../models/user';
+import { IUserChange, User } from '../models/user';
+import "rxjs/add/operator/catch"
 
 @Injectable()
 export class LoginService {

@@ -10,7 +10,8 @@ export class Checks {
 
 export class ProductC {
 
-  name: string;
-  code: number;
+  name: string; // Наименование товара
+  code: number; // Код товара
+  boole: any; // Для отметки товара(под удаление/пропуск)
 
 }

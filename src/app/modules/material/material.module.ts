@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  MatButton,
+  MatProgressSpinnerModule,
   MatCheckboxModule,
   MatAutocompleteModule,
   MatFormFieldModule,
@@ -10,7 +10,6 @@ import {
   MatButtonToggleModule,
   MatCardModule,
   MatChipsModule,
-  // MatCore
   MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
@@ -22,7 +21,6 @@ import {
   MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule,
   MatRadioModule,
   MatRippleModule,
   MatSelectModule,
@@ -38,6 +36,7 @@ import {
 } from '@angular/material';
 
 const material = [
+    MatProgressSpinnerModule,
     MatCheckboxModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -57,7 +56,6 @@ const material = [
     MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule,
     MatRadioModule,
     MatRippleModule,
     MatSelectModule,
