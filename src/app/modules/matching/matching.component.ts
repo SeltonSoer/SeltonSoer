@@ -30,7 +30,16 @@ export class MatchingComponent implements OnInit {
 
   ngOnInit() {
     this.matchingService.alreadyMatching = [];
+    this.countWares();
     this.getNum();
+  }
+
+  countWares() {
+    // Получение кол-ва оставшихся товаров для сопоставления
+    this.matchingService.getCountWares().subscribe( response => {
+      this.matchingService.countWares = response.count;
+      return this.matchingService.countWares
+    })
   }
 
   product(element) {

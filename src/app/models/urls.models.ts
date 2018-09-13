@@ -56,4 +56,10 @@ export class Urls {
     return "/api/ofd/registration"
   }
 
+  /**
+   * Api Кол-во оставшихся товаров для сопоставления
+   * */
+  static get urlsCountWares() {
+    return "api/ofd/count-wares"
+  }
 }

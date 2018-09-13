@@ -19,6 +19,7 @@ export class MatchingService {
   pageTemp; // Переменная страниц Api
   filterNum: Array<any> = []; // Для фильтрации
   checkout = false; // Спинер
+  countWares: number;
 
 
   constructor (
@@ -36,9 +37,14 @@ export class MatchingService {
     return this.http.get(url);
   }
 
-  // Получить числа для фильтрацции товаров
+  // Получить числа для фильтрации товаров
   getNumber(): Observable<any> {
     return this.http.get(Urls.urlsNumber)
+  }
+
+  // Кол-во оставшихся товаров для сопоставления
+  getCountWares(): Observable<any> {
+    return this.http.get(Urls.urlsCountWares)
   }
 
   // Поиск товаров из 1С
