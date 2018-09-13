@@ -37,8 +37,14 @@ export class MatchingComponent implements OnInit {
   countWares() {
     // Получение кол-ва оставшихся товаров для сопоставления
     this.matchingService.getCountWares().subscribe( response => {
-      this.matchingService.countWares = response.count;
-      return this.matchingService.countWares
+      if (response.count == null) {
+        this.matchingService.countWares = 0;
+        return this.matchingService.countWares
+      }
+      else {
+        this.matchingService.countWares = response.count;
+        return this.matchingService.countWares
+      }
     })
   }
 
