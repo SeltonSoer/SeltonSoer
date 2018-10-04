@@ -1,13 +1,6 @@
 export class Urls {
 
   /**
-   * Api Фильтрации
-   * */
-  static get urlsNumber() {
-    return "/api/ofd/number"
-  }
-
-  /**
    * Api Авторизации
    * */
   static get urlsAuthApi() {

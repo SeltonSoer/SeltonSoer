@@ -5,19 +5,14 @@ import { RestService } from './rest.service';
 import { Router } from '@angular/router';
 import { MessageService } from './message.service';
 import { LoginService } from './login.service';
-import { Http } from '@angular/http';
 
 
 @Injectable()
 export class MatchingService {
 
   tempDataProductC: Array<any> = []; // Товары из 1С
-  tempData: Array<any>; // Временные товары
   matchingProduct: Array<any>; // Для сопоставления товаров
-  responseTemp: any;
   alreadyMatching: Array<any>; // Уже сопоставленные товары
-  pageTemp; // Переменная страниц Api
-  filterNum: Array<any> = []; // Для фильтрации
   checkout = false; // Спинер
   countWares: number;
 
@@ -30,16 +25,8 @@ export class MatchingService {
   ) {  }
 
   // Получить чеки
-  getChecks(url): Observable<any> {
-    if (url == undefined) {
-      url = '/api/ofd/checks'
-    }
-    return this.http.get(url);
-  }
-
-  // Получить числа для фильтрации товаров
-  getNumber(): Observable<any> {
-    return this.http.get(Urls.urlsNumber)
+  getChecks(): Observable<any> {
+    return this.http.get('/api/ofd/checks')
   }
 
   // Кол-во оставшихся товаров для сопоставления
@@ -65,8 +52,7 @@ export class MatchingService {
   // Удалить (пропустить) товар
   del(data) {
     this.http.post(Urls.urlsDelete, data).subscribe((x) => {
-      console.log(x);
-      this.router.navigate(['login'])
+      this.router.navigate(['/login'])
     });
   }
 

@@ -23,11 +23,11 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngIf="data" (click)="getProductByCodeOrName(data)">
-      <td style="border-bottom-left-radius: 8px" > {{ data.product }} </td>
-      <td> {{ data.store }} </td>
-      <td> {{ data.price }} </td>
-      <td style="border-bottom-right-radius: 8px" > {{ data.region }} </td>
+    <tr *ngIf="matchingService.matchingProduct" (click)="getProductByCodeOrName(matchingService.matchingProduct[0])">
+      <td style="border-bottom-left-radius: 8px" > {{ matchingService.matchingProduct[0].product }} </td>
+      <td> {{ matchingService.matchingProduct[0].rival }} </td>
+      <td> {{ matchingService.matchingProduct[0].price }} </td>
+      <td style="border-bottom-right-radius: 8px" > {{ matchingService.matchingProduct[0].region }} </td>
     </tr>
     </tbody>
   </table>

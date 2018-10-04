@@ -4,7 +4,7 @@ export class Checks {
     product: string; // Товар
     price: number; // Цена
     region: string; // Город
-    store: string; // Магазин
+    rival: string; // Магазин
 
 }
 

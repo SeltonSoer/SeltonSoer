@@ -69,7 +69,7 @@ const material = [
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
 ];
 
 @NgModule({
